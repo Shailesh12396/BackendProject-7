@@ -1,0 +1,129 @@
+In the backend project we are building RESTFUL API for an E-Commerce website
+
+In any project there are few steps like :-
+~ Authentication and Authorization
+  There are two parts of this first is the Customer and second is the Admin
+  In the beginning the basic AUTH is used which have certain problems like email,password are easily exposable
+  After that a new AUTH called Token Based AUTH came 
+
+
+Steps :-
+1. Create a Node.js project
+2. Define the structure of the project (Router, Controller, Model)
+3. AUTH
+
+////////////////////////////////
+
+Dependencies required for the project :-
+1. Mongoose (For the database)
+   npm install mongoose 
+2. Express (For creating the server)
+   npm install express
+3. JSON Web Token (JWT) (For creating the tokens)
+   npm install jsonwebtoken
+4. becryptjs (For providing the encryption to the credentials)
+   npm install bcryptjs 
+
+/////////////////////////////////
+
+Create three folders in this sequence
+1. Models
+2. controllers
+3. routes
+
+/////////////////////////////////
+
+create a file server.js which is the starting point of the project
+It creats the admin and also responsible for starting the server 
+It makes the connection with the database 
+
+////////////////////////////////////
+
+Create a Config folder which contains all the config files
+db.config.js
+server.config.js
+
+/////////////////////////////////
+
+In Models folder create the user.model.js 
+Which contains all the Mongoose (DB) related info like requiring the DB and creating schema and remember to export that module so that it can use anywhere in the project
+
+///////////////////////////////
+
+Now in controllers folder create auth.controller.js 
+This folder contains all the API's 
+First is the registration/signup API (auth.controller.js)
+
+
+//////////////////////////////
+
+Now in routes folder create auth.routes.js
+and provide operations when a request is made
+
+//////////////////////////////
+
+Now int server.js Stich the routes with the server (app)
+
+/////////////////////////////
+
+Now add middlewares in server.js 
+app.use(express.json())  //Middleware (Whenever you POST data from postman is sends it in  JSON format and express only understands javasxript object 
+                           so middlewares convert them into actual format)
+
+Middlewares are nothing but just a function whihch is having three parameters (req,res,next)
+next is also a function which helps in passing the contole from one middleware to another
+req,res are the objects
+
+
+/////////////////////////////
+
+Now start the server from server.js file and goto postman
+Now POST the data to this API localhost:8888/ecomm/api/v1/auth/signup
+the data will be in body>raw like this 
+{
+    "name":"Mohan Singh",
+    "userId":"mohan07",
+    "email": "mohan@gmail.com",
+    "password":"Mohan@123"
+}
+
+///////////////////////////////
+After this the data will be added in the database named ecomm_db
+
+///////////////////////////
+
+Create the folder middlewares
+and in this folder create a file auth.mw.js
+
+
+////////////////////////////
+Creating the Login API
+
+In auth.controller.js
+return the JWT (JSON Web Token) if the userId and password are correct
+
+Secrect is provide to better security so it have to keep changing so make its config (auth.config.js)
+
+/////////////////////////////
+Now create routes for signin API (in auth.routes.js)
+
+Now create a middleware for signin API (in auth.mw.js)
+then add it to route (auth.routes.js)
+
+//////////////////////////////
+Now create API's for category resource
+
+/////////////////////////////
+In models folder create category.model.js
+
+////////////////////////////
+Now make controller for the category
+category.controller.js
+
+/////////////////////////////
+Now create the routes for category
+category.routes.js
+
+//////////////////////////////
+Now create the middleware for allowing only the authorized person to add category in
+auth.mw.js
