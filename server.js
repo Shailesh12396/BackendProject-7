@@ -61,6 +61,9 @@ require("./routes/category.routes")(app)
 
 require("./routes/product.routes")(app)
 
+require("./routes/cart.routes")(app)
+
+
 // Start the server
 // 8080 is the hard coded port number so to remove this there is server.config.js
 app.listen(server_config.PORT, () => {

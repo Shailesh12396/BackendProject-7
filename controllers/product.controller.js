@@ -189,8 +189,8 @@ exports.basedOnCostSecond=async(req, res)=>{
 
 exports.basedOnCostThird=async(req, res)=>{
     try{
-        const onecategory = await product_model.find({category : req.params['category_name'], cost : {$gt: req.params['cost']}})   
-        res.status(200).send(onecategory);
+        const products = await product_model.find({category : req.params['category_name'], cost : {$gt: req.params['cost']}})   
+        res.status(200).send(products);
  
      }catch(err){
         console.log('Error while getting products in a category whose cost is greater than X', err);
@@ -205,8 +205,8 @@ exports.basedOnCostThird=async(req, res)=>{
 
 exports.basedOnCostFourth=async(req, res)=>{
     try{
-        const onecategory = await product_model.find({category : req.params['category_name'], cost : {$lt: req.params['cost']}})   
-        res.status(200).send(onecategory);
+        const products = await product_model.find({category : req.params['category_name'], cost : {$lt: req.params['cost']}})   
+        res.status(200).send(products);
  
      }catch(err){
         console.log('Error while getting products in a category whose cost is less than X', err);

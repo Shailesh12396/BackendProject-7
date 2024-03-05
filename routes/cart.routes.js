@@ -7,6 +7,6 @@ cart_controller=require("../controllers/cart.controller")
 auth_mw=require("../middlewares/auth.mw")
 
 module.exports=(app)=>{
-    app.post("/ecomm/api/v1/auth/products", cart_controller.createNewCart)
+    app.post("/ecomm/api/v1/auth/carts", cart_controller.createNewCart)
 
 }
