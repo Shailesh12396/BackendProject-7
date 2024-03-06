@@ -17,6 +17,7 @@ module.exports=(app)=>{
 
     app.delete("/ecomm/api/v1/auth/products/:product_name",[auth_mw.verifyToken, authMW.isAdmin], product_controller.deleteOneProduct)
 
+    
     // Searching functionality API (Find all the products in Electronics category)
     // localhost:8888/ecomm/api/v1/auth/categories/Electronics/products
     app.get("/ecomm/api/v1/auth/categories/:category_name/products",[auth_mw.verifyToken],  product_controller.getProductInCategory)
